@@ -250,8 +250,6 @@ func openWebview(url string) {
 	// lets the WebKitWebProcess run. Best-effort; ignore errors.
 	_ = os.Setenv("WEBKIT_DISABLE_SANDBOX_THIS_IS_DANGEROUS", "1")
 	_ = os.Setenv("WEBKIT_FORCE_SANDBOX", "0")
-	_ = os.Setenv("WEBKIT_DISABLE_COMPOSITING_MODE", "1")
-	_ = os.Setenv("WEBKIT_DISABLE_DMABUF_RENDERER", "1")
 
 	debug := os.Getenv("NETKIT_DEBUG") == "1"
 
@@ -263,6 +261,6 @@ func openWebview(url string) {
 
 	w.SetTitle(webviewTitle)
 	w.SetSize(webviewWidth, webviewHeight, webview.HintNone)
-	w.Navigate(url)
+	w.Navigate("http://127.0.0.1:41990")
 	w.Run()
 }
